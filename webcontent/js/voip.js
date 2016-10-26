@@ -3,9 +3,9 @@ var socketIO = io();
 var soundcardSampleRate = null; //Sample rate from the soundcard (is set at mic access)
 var mySampleRate = 48000; //Samplerate outgoing audio (common: 8000, 12000, 16000, 24000, 32000, 48000)
 var myBitRate = 16; //8,16,32 - outgoing bitrate
-var myMinGain = 13/100; //min Audiolvl
+var myMinGain = 10/100; //min Audiolvl
 var micAccessAllowed = false; //Is set to true if user granted access
-var chunkSize = 16384;
+var chunkSize = 32768;
 
 var downSampleWorker = new Worker('./js/voipWorker.js');
 var upSampleWorker = new Worker('./js/voipWorker.js');
