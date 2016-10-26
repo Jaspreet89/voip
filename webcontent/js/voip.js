@@ -153,8 +153,8 @@ if (hasGetUserMedia()) {
   		//Dynamic Compression
 		dynCompressor = context.createDynamicsCompressor();
 		dynCompressor.threshold.value = -25;
-		dynCompressor.knee.value = 9;
-		dynCompressor.ratio.value = 8;
+		dynCompressor.knee.value = 40;
+		dynCompressor.ratio.value = 12;
 		dynCompressor.reduction.value = -20;
 		dynCompressor.attack.value = 0.0;
 		dynCompressor.release.value = 0.25;
