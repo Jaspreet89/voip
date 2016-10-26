@@ -16,7 +16,7 @@ var io  = require('socket.io').listen(app.listen(port));
 io.sockets.on('connection', function (socket) {
 	console.log("New user connected:", socket.id);
 	io.emit('clients', io.engine.clientsCount);
-
+	
 	socket.on('disconnect', function () {
 		console.log("User disconnected:", socket.id);
 		socket.broadcast.emit('clients', io.engine.clientsCount);

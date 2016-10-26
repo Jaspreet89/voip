@@ -39,8 +39,6 @@ self.addEventListener('message', function(e) {
 					resapledData = mapUint8ToFloat32Array(resapledData);
 				} else if(inBitrate==16) {
 					resapledData = mapUint16ToFloat32Array(resapledData);
-				} else if(inBitrate==32) {
-					resapledData = mapUint32ToFloat32Array(resapledData);
 				}
 				var lowDat = resapledData; //lowSignal(resapledData, p);
 				self.postMessage([clientId,lowDat]); //Send data back....
@@ -62,9 +60,7 @@ self.addEventListener('message', function(e) {
 				} else if(outBitRate==16) {
 					bitratedData = mapFloat32ToUInt16Array(resapledData);
 				}
-else if(outBitRate==32) {
-					bitratedData = mapFloat32ToUInt32Array(resapledData);
-				}
+
 				self.postMessage(bitratedData); //Send it back....
 			}
 			
@@ -206,20 +202,7 @@ function mapUint8ToFloat32Array(uin8) {
 	}
 	return flt32Array;
 }
-function mapUint32ToFloat32Array(uin32) {
-	var flt32Array = new Float32Array(uin32.length);
-	for(var i=0; i< uin32.length; i++) {
-		flt32Array[i] = uin32[i]*0.0000000004656612-1;
-	}
-	return flt32Array;
-}
-function mapFloat32ToUInt32Array(flt32) {
-	var uint32Array = new Uint32Array(flt32.length);
-	for(var i=0; i< flt32.length; i++) {
-		uint32Array[i] = (flt32[i]+1)*2147483647.5;
-	}
-	return uint32Array;
-}
+
 //Put flt32Array in get Uint8Array Out
 function mapFloat32ToUInt8Array(flt32) {
 	var uint8Array = new Uint8Array(flt32.length);
